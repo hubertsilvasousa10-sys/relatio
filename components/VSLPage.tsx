@@ -103,7 +103,6 @@ const WistiaPlayer: React.FC<{ mediaId: string; aspect: string }> = ({ mediaId, 
 
   const paddingTop = (1 / parseFloat(aspect)) * 100;
 
-  // Fix: Declare a dynamic tag for the custom element 'wistia-player' to bypass TypeScript JSX validation errors
   const WistiaCustomTag = 'wistia-player' as any;
 
   return (
@@ -116,7 +115,6 @@ const WistiaPlayer: React.FC<{ mediaId: string; aspect: string }> = ({ mediaId, 
           padding-top: ${paddingTop}%; 
         }
       `}</style>
-      {/* Fix: Using the custom tag variable to avoid property 'wistia-player' does not exist error */}
       <WistiaCustomTag media-id={mediaId} aspect={aspect}></WistiaCustomTag>
     </div>
   );
@@ -156,12 +154,12 @@ const VSLPage: React.FC = () => {
         <h1 className="font-headline text-3xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
           Se Você Não Agir <span className="text-red-600">AGORA</span>, Esta Pode Ser a Última Noite Que Vocês Dormem Sob o Mesmo Teto.
         </h1>
-        <p className="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto font-medium">
+        <h2 className="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto font-medium mb-12">
           Conheça o protocolo exato para rearmar o amor e a conexão no seu relacionamento em 14 dias, mesmo que o outro lado já tenha desistido.
-        </p>
+        </h2>
 
-        {/* 3. VSL Embed - Wider Angle (max-w-5xl) */}
-        <div className="mt-12 max-w-5xl mx-auto relative group px-2 md:px-0 text-center">
+        {/* 3. VSL Embed */}
+        <div className="max-w-5xl mx-auto relative group px-2 md:px-0 text-center">
           <div className="relative aspect-video bg-slate-900 rounded-2xl shadow-[0_35px_80px_rgba(0,0,0,0.45)] overflow-hidden border-2 md:border-8 border-gray-100/50 backdrop-blur-sm transition-transform duration-500 hover:scale-[1.01]">
             <WistiaPlayer mediaId="sqw28d5hlt" aspect="1.7777777777777777" />
           </div>
@@ -295,7 +293,100 @@ const VSLPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SLIDER: Visual Testimonials Section (Videos & Images) */}
+      {/* NEW: Mentor Section */}
+      <section className="bg-white py-24 px-6 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
+            {/* Left Column: Image */}
+            <div className="w-full md:w-5/12">
+              <div className="relative">
+                <div className="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-3 translate-x-4 translate-y-4 -z-10 opacity-10"></div>
+                <div className="aspect-[4/5] bg-gray-200 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                  <img 
+                    src="https://imgur.com/Do3dHX4.jpg" 
+                    alt="Mentora Relatio" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl">
+                    <p className="font-headline text-xl font-black text-gray-900 leading-none">Mentora Relatio</p>
+                    <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mt-2">Psicóloga & Mentora de Casais</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Description */}
+            <div className="w-full md:w-7/12 text-center md:text-left">
+              <span className="text-blue-600 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Autoridade & Experiência</span>
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-8 italic tracking-tighter leading-tight">
+                Quem Irá Guiar Você para um Futuro Melhor?
+              </h2>
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
+                  A mentora do <span className="text-blue-600 font-bold">Plano Relatio</span> é formada em Psicologia, com especialização em relacionamentos e dinâmica de casais por uma instituição de referência como a <span className="font-bold border-b-2 border-blue-200">PUC</span>.
+                </p>
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
+                  Atua há muitos anos ajudando homens e mulheres a superarem crises afetivas, melhorarem a comunicação e reconstruírem relacionamentos desgastados.
+                </p>
+                <div className="bg-blue-50 p-8 rounded-3xl border border-blue-100 italic relative">
+                  <svg className="w-10 h-10 text-blue-200 absolute -top-4 -left-4" fill="currentColor" viewBox="0 0 32 32"><path d="M10 8v8h6v8h-8v-8h-2v-8h4zm14 0v8h6v8h-8v-8h-2v-8h4z"/></svg>
+                  <p className="text-gray-700 font-semibold leading-relaxed relative z-10">
+                    "Sua abordagem une conhecimento científico e experiência prática, transformando teoria em passos claros e aplicáveis no dia a dia."
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-12 flex flex-wrap justify-center md:justify-start gap-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <span className="text-sm font-bold text-gray-600">CRP Ativo</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <span className="text-sm font-bold text-gray-600">+10 Anos de Experiência</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: Director Section (Smaller and inverted) */}
+      <section className="bg-gray-50 py-16 px-6 border-b border-gray-200">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
+            {/* Right Column: Image */}
+            <div className="w-full md:w-4/12">
+              <div className="relative">
+                <div className="aspect-square bg-gray-200 rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+                  <img 
+                    src="https://imgur.com/oaOff5x.jpg" 
+                    alt="Diretor Relatio" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-3 rounded-xl text-center">
+                    <p className="text-white font-bold text-sm leading-none">Diretoria Relatio</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Left Column: Description */}
+            <div className="w-full md:w-8/12 text-center md:text-left">
+              <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-6 italic tracking-tight">Estratégia & Liderança</h3>
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+                Diretor do plano Relatio, responsável por guiar toda a estratégia e a metodologia aplicada. Atua há anos no desenvolvimento de dinâmicas emocionais e comportamentais voltadas a relacionamentos, unindo prática, análise real de casos e uma visão clara do que realmente funciona no dia a dia dos casais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SLIDER: Visual Testimonials Section */}
       <section className="py-24 bg-white px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
@@ -303,7 +394,7 @@ const VSLPage: React.FC = () => {
             <p className="text-gray-500 text-lg md:text-2xl font-medium max-w-3xl mx-auto">Essas pessoas estavam onde você está agora. Elas decidiram agir.</p>
           </div>
 
-          {/* Videos Slider - Manual Navigation */}
+          {/* Videos Slider */}
           <div className="mb-24">
             <h3 className="text-xl font-black text-center mb-12 uppercase tracking-widest text-red-600 italic">Depoimentos em Vídeo (Confidencial)</h3>
             <div className="relative group overflow-hidden h-[550px] md:h-[720px] flex items-center justify-center">
@@ -349,7 +440,7 @@ const VSLPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Results Images Slider - Manual Navigation */}
+          {/* Results Images Slider */}
           <div>
             <h3 className="text-xl font-black text-center mb-12 uppercase tracking-widest text-blue-600 italic">Resultados Confirmados (Prints de Conversa)</h3>
             <div className="relative group overflow-hidden h-[620px] md:h-[780px] flex items-center justify-center">
