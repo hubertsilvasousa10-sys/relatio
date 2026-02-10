@@ -293,7 +293,7 @@ const VSLPage: React.FC = () => {
         </div>
       </section>
 
-      {/* NEW: Mentor Section */}
+      {/* Mentor Section */}
       <section className="bg-white py-24 px-6 border-b border-gray-100">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
@@ -355,7 +355,7 @@ const VSLPage: React.FC = () => {
         </div>
       </section>
 
-      {/* NEW: Director Section (Smaller and inverted) */}
+      {/* Director Section (Smaller and inverted) */}
       <section className="bg-gray-50 py-16 px-6 border-b border-gray-200">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row-reverse items-center gap-12">
@@ -492,73 +492,7 @@ const VSLPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. Prova Social (Slides - Text) */}
-      <section className="py-24 bg-gray-50 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-16 text-gray-900 italic uppercase tracking-tighter">O que dizem os nossos alunos</h2>
-          <div className="relative overflow-hidden min-h-[350px] flex items-center justify-center">
-            {testimonials.map((t, i) => (
-              <div 
-                key={i} 
-                className={`absolute transition-all duration-1000 ease-in-out transform w-full max-w-2xl px-4 ${
-                  i === currentSlide ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
-                }`}
-              >
-                <div className="bg-white p-12 md:p-16 rounded-[3rem] shadow-2xl border border-gray-100 relative">
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white p-4 rounded-full shadow-xl border border-gray-100">
-                     <svg className="w-10 h-10 text-blue-600 opacity-20" fill="currentColor" viewBox="0 0 32 32"><path d="M10 8v8h6v8h-8v-8h-2v-8h4zm14 0v8h6v8h-8v-8h-2v-8h4z"/></svg>
-                  </div>
-                  <div className="flex justify-center mb-8 text-amber-400">
-                    {[...Array(t.stars)].map((_, s) => (
-                      <svg key={s} className="w-7 h-7 mx-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-xl md:text-2xl text-gray-700 font-medium leading-relaxed mb-8">"{t.text}"</p>
-                  <p className="font-black text-gray-900 text-lg tracking-tight">— {t.name}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center space-x-3 mt-12">
-            {testimonials.map((_, i) => (
-              <button 
-                key={i} 
-                onClick={() => setCurrentSlide(i)}
-                className={`h-2.5 rounded-full transition-all duration-500 ${i === currentSlide ? 'bg-red-600 w-10' : 'bg-gray-200'}`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Guarantee Section */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto bg-blue-50 rounded-[4rem] p-12 md:p-20 border-2 border-blue-100 flex flex-col md:flex-row items-center space-y-12 md:space-y-0 md:space-x-16 shadow-2xl">
-          <div className="flex-shrink-0">
-             <div className="w-40 h-40 md:w-56 md:h-56 relative">
-               <svg className="w-full h-full text-blue-600 animate-[spin_30s_linear_infinite]" viewBox="0 0 100 100">
-                 <path id="circlePath" fill="none" d="M 10, 50 a 40,40 0 1,1 80,0 40,40 0 1,1 -80,0" />
-                 <text className="text-[9px] font-black uppercase tracking-[0.2em] fill-current">
-                   <textPath href="#circlePath">Garantia Incondicional • Risco Zero • Satisfação Total •</textPath>
-                 </text>
-               </svg>
-               <div className="absolute inset-0 flex items-center justify-center font-headline text-5xl font-black text-blue-800 italic">
-                 30D
-               </div>
-             </div>
-          </div>
-          <div className="text-center md:text-left">
-            <h3 className="text-3xl md:text-4xl font-black text-blue-900 mb-6 uppercase italic tracking-tighter leading-tight">Sua Felicidade é o Nosso Compromisso</h3>
-            <p className="text-blue-800/80 text-lg leading-relaxed font-medium">
-              Você tem 30 dias para testar o método completo. Se você não sentir uma mudança palpável na energia do seu lar, basta um e-mail. Devolvemos 100% do valor sem perguntas. O risco de tentar é zero, o risco de não fazer nada é perder quem você ama.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Pricing & Offers */}
+      {/* Pricing & Offers */}
       <section id="offers" className="py-24 px-6 bg-gray-900 text-white overflow-hidden relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] aspect-square bg-blue-600/10 rounded-full -translate-y-2/3 pointer-events-none"></div>
         <div className="max-w-6xl mx-auto relative z-10">
