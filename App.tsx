@@ -4,7 +4,7 @@ import VSLPage from './components/VSLPage';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <VSLPage />
     </div>
   );
