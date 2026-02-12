@@ -84,6 +84,8 @@ const VSLPage: React.FC = () => {
   const [currentImageSlide, setCurrentImageSlide] = useState(0);
   const offersRef = useRef<HTMLElement>(null);
 
+  const checkoutLink = "https://www.ggcheckout.com/checkout/v2/REJSI0EhWtp0FKnDdLFL";
+
   const scrollToOffers = () => {
     offersRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -172,129 +174,119 @@ const VSLPage: React.FC = () => {
         </div>
       </section>
 
-      {/* VIDEO TESTIMONIALS SLIDER - ENHANCED LAYOUT */}
+      {/* VIDEO TESTIMONIALS SLIDER - REIMAGINED & POLISHED */}
       <section className="py-24 bg-white px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl md:text-6xl font-black mb-6 tracking-tighter italic uppercase">Depoimentos em Vídeo</h2>
           <p className="text-gray-500 font-bold mb-16 uppercase tracking-widest text-sm">Vejas as histórias de quem já viveu essa transformação</p>
           
-          <div className="relative flex items-center justify-center max-w-5xl mx-auto">
-             {/* Large Navigation Buttons - Desktop */}
-             <button 
-               onClick={prevVideo}
-               className="hidden md:flex absolute -left-12 lg:-left-20 z-10 w-16 h-16 bg-white rounded-full shadow-2xl items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 active:scale-90 border border-gray-100"
-             >
-               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" strokeWidth="4" /></svg>
-             </button>
+          <div className="relative flex items-center justify-center max-w-4xl mx-auto">
+             {/* Navigation Controls - Premium Glass Style */}
+             <div className="absolute inset-y-0 left-0 md:-left-20 flex items-center z-20">
+                <button 
+                  onClick={prevVideo}
+                  className="w-12 h-12 md:w-16 md:h-16 bg-white/90 backdrop-blur-xl rounded-full shadow-2xl flex items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 active:scale-90 border border-gray-100 group"
+                >
+                  <svg className="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" strokeWidth="4" /></svg>
+                </button>
+             </div>
 
-             <div className="w-full max-w-[340px] md:max-w-[380px] relative">
-                <div className="aspect-[9/16] bg-slate-950 rounded-[3rem] overflow-hidden border-[10px] border-gray-900 shadow-[0_50px_100px_rgba(0,0,0,0.4)] relative">
+             <div className="w-full max-w-[320px] md:max-w-[360px] relative">
+                <div className="aspect-[9/16] bg-slate-950 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border-[8px] md:border-[12px] border-gray-900 shadow-[0_50px_100px_rgba(0,0,0,0.5)] relative">
                    <WistiaPlayer 
-                     key={`video-${videoTestimonials[currentVideoSlide].wistiaId}`}
+                     key={`video-vsl-${videoTestimonials[currentVideoSlide].wistiaId}`}
                      mediaId={videoTestimonials[currentVideoSlide].wistiaId} 
                      aspect={videoTestimonials[currentVideoSlide].aspect} 
                    />
                 </div>
-                
-                {/* Mobile Navigation */}
-                <div className="flex md:hidden justify-between absolute top-1/2 -translate-y-1/2 w-full px-4 pointer-events-none">
-                  <button onClick={prevVideo} className="p-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg pointer-events-auto active:scale-90">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" strokeWidth="4" /></svg>
-                  </button>
-                  <button onClick={nextVideo} className="p-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg pointer-events-auto active:scale-90">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" strokeWidth="4" /></svg>
-                  </button>
-                </div>
              </div>
 
-             <button 
-               onClick={nextVideo}
-               className="hidden md:flex absolute -right-12 lg:-right-20 z-10 w-16 h-16 bg-white rounded-full shadow-2xl items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 active:scale-90 border border-gray-100"
-             >
-               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" strokeWidth="4" /></svg>
-             </button>
+             <div className="absolute inset-y-0 right-0 md:-right-20 flex items-center z-20">
+                <button 
+                  onClick={nextVideo}
+                  className="w-12 h-12 md:w-16 md:h-16 bg-white/90 backdrop-blur-xl rounded-full shadow-2xl flex items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 active:scale-90 border border-gray-100 group"
+                >
+                  <svg className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" strokeWidth="4" /></svg>
+                </button>
+             </div>
           </div>
 
           <div className="max-w-2xl mx-auto mt-12 px-6">
-             <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 italic">
-                <p className="text-xl md:text-2xl font-black text-blue-900">"{videoTestimonials[currentVideoSlide].quote}"</p>
-             </div>
-             <div className="flex justify-center mt-6 space-x-2">
-                {videoTestimonials.map((_, idx) => (
-                  <button 
-                    key={idx} 
-                    onClick={() => setCurrentVideoSlide(idx)}
-                    className={`h-2.5 rounded-full transition-all duration-300 ${idx === currentVideoSlide ? 'w-10 bg-blue-600' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
-                  />
-                ))}
+             <div className="bg-gray-50 p-8 rounded-[2rem] border border-gray-100 shadow-sm">
+                <p className="text-xl md:text-2xl font-black italic text-gray-800 leading-tight">"{videoTestimonials[currentVideoSlide].quote}"</p>
+                <div className="flex justify-center mt-6 space-x-2">
+                   {videoTestimonials.map((_, idx) => (
+                     <button 
+                       key={idx} 
+                       onClick={() => setCurrentVideoSlide(idx)}
+                       className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentVideoSlide ? 'w-12 bg-blue-600' : 'w-3 bg-gray-300 hover:bg-gray-400'}`}
+                     />
+                   ))}
+                </div>
              </div>
           </div>
         </div>
       </section>
 
-      {/* IMAGE TESTIMONIALS SLIDER - NORMAL SIZE & SLIDER */}
-      <section className="py-24 bg-gray-50 px-6">
+      {/* IMAGE TESTIMONIALS SLIDER - NORMAL SIZE & SLIDER STYLE */}
+      <section className="py-24 bg-gray-50 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter">Provas de Reconexão</h2>
-            <p className="text-gray-500 mt-4 font-bold uppercase tracking-widest text-xs">Prints de resultados reais enviados por alunos</p>
+            <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter">Resultados Reais</h2>
+            <p className="text-gray-500 mt-4 font-bold uppercase tracking-widest text-xs">A prova de que a reconexão funciona</p>
           </div>
 
-          <div className="relative flex items-center justify-center max-w-4xl mx-auto">
-             <button 
-               onClick={prevImage}
-               className="hidden md:flex absolute -left-8 lg:-left-16 z-10 w-14 h-14 bg-white rounded-full shadow-xl items-center justify-center text-gray-900 hover:bg-green-600 hover:text-white transition-all border border-gray-100 active:scale-90"
-             >
-               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" strokeWidth="4" /></svg>
-             </button>
+          <div className="relative flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto gap-8">
+             {/* Left Column: The Image (Normal Proportions) */}
+             <div className="w-full md:w-1/2 flex justify-center">
+                <div className="relative group">
+                  <div className="bg-white p-4 rounded-[2rem] shadow-2xl border border-gray-100 transform transition-all duration-500 hover:rotate-1">
+                    <img 
+                      src={imageTestimonials[currentImageSlide].url} 
+                      alt={imageTestimonials[currentImageSlide].title} 
+                      className="max-h-[600px] w-auto rounded-[1.5rem] object-contain shadow-inner"
+                    />
+                  </div>
+                </div>
+             </div>
 
-             <div className="w-full bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden group">
-                <div className="flex flex-col md:flex-row">
-                   <div className="w-full md:w-3/5 bg-gray-100 flex items-center justify-center">
-                      {/* Normal Size Image Container */}
-                      <img 
-                        src={imageTestimonials[currentImageSlide].url} 
-                        alt={imageTestimonials[currentImageSlide].title} 
-                        className="max-h-[500px] w-auto object-contain transition-all duration-500"
-                      />
+             {/* Right Column: Text & Navigation */}
+             <div className="w-full md:w-1/2 text-center md:text-left">
+                <div className="bg-white p-10 md:p-12 rounded-[3rem] shadow-xl border border-gray-100 relative">
+                   <div className="absolute -top-6 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0">
+                      <span className="bg-green-500 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-lg">Depoimento Verificado</span>
                    </div>
-                   <div className="w-full md:w-2/5 p-10 md:p-12 flex flex-col justify-center bg-white border-l border-gray-50">
-                      <div className="mb-6">
-                         <span className="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">Depoimento Verificado</span>
-                      </div>
-                      <h4 className="text-2xl font-black text-gray-900 mb-4 italic uppercase tracking-tighter">{imageTestimonials[currentImageSlide].title}</h4>
-                      <p className="text-gray-600 text-lg font-medium leading-relaxed italic">"{imageTestimonials[currentImageSlide].desc}"</p>
+                   
+                   <h4 className="text-3xl font-black text-gray-900 mb-6 italic uppercase tracking-tighter mt-4">{imageTestimonials[currentImageSlide].title}</h4>
+                   <p className="text-gray-600 text-xl font-medium leading-relaxed italic mb-10">"{imageTestimonials[currentImageSlide].desc}"</p>
+                   
+                   <div className="flex items-center justify-center md:justify-start space-x-6">
+                      <button 
+                        onClick={prevImage}
+                        className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-all transform active:scale-90"
+                      >
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" strokeWidth="4" /></svg>
+                      </button>
                       
-                      {/* Navigation Dots for Image Slider */}
-                      <div className="flex space-x-2 mt-8">
+                      <div className="flex space-x-2">
                         {imageTestimonials.map((_, idx) => (
                           <button 
                             key={idx} 
                             onClick={() => setCurrentImageSlide(idx)}
-                            className={`h-2 rounded-full transition-all duration-300 ${idx === currentImageSlide ? 'w-8 bg-blue-600' : 'w-2 bg-gray-200'}`}
+                            className={`h-2 rounded-full transition-all duration-300 ${idx === currentImageSlide ? 'w-10 bg-blue-600' : 'w-2 bg-gray-200'}`}
                           />
                         ))}
                       </div>
+
+                      <button 
+                        onClick={nextImage}
+                        className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center text-gray-900 hover:bg-blue-600 hover:text-white transition-all transform active:scale-90"
+                      >
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" strokeWidth="4" /></svg>
+                      </button>
                    </div>
                 </div>
-
-                {/* Mobile Tap areas */}
-                <div className="md:hidden flex h-16 border-t border-gray-100">
-                   <button onClick={prevImage} className="flex-1 flex items-center justify-center bg-gray-50 border-r border-gray-100 active:bg-gray-100">
-                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" strokeWidth="4" /></svg>
-                   </button>
-                   <button onClick={nextImage} className="flex-1 flex items-center justify-center bg-gray-50 active:bg-gray-100">
-                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" strokeWidth="4" /></svg>
-                   </button>
-                </div>
              </div>
-
-             <button 
-               onClick={nextImage}
-               className="hidden md:flex absolute -right-8 lg:-right-16 z-10 w-14 h-14 bg-white rounded-full shadow-xl items-center justify-center text-gray-900 hover:bg-green-600 hover:text-white transition-all border border-gray-100 active:scale-90"
-             >
-               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" strokeWidth="4" /></svg>
-             </button>
           </div>
         </div>
       </section>
@@ -321,7 +313,7 @@ const VSLPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. SINGLE OFFER SECTION */}
+      {/* 8. SINGLE OFFER SECTION - UPDATED CHECKOUT LINK */}
       <section ref={offersRef} id="offer" className="py-24 bg-gray-900 text-white relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] aspect-square bg-blue-600/10 rounded-full -translate-y-2/3 pointer-events-none"></div>
         
@@ -365,7 +357,7 @@ const VSLPage: React.FC = () => {
               </div>
 
               <a 
-                href="https://www.ggcheckout.com/checkout/v2/e62Rd3QTr1HoXZ1m0eyN"
+                href={checkoutLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-green-500 hover:bg-green-600 text-white font-headline text-2xl md:text-4xl font-black py-8 px-10 rounded-[2.5rem] transition-all shadow-[0_30px_60px_rgba(34,197,94,0.3)] uppercase tracking-tighter transform hover:scale-105 active:scale-95 text-center block"
